@@ -1,0 +1,179 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+  <!--[if lt IE 9]><script src="/assets/html5shiv-fd9b74f5f62caf465acf9778fa1ff93f.js"></script><![endif]-->
+  <script src="/assets/application-37f635dd0904387a68e95e0c1fca224c.js"></script>
+  <link href="/assets/small-ltr-ee27ebdc6720979df872925c98fe110c.css" media="only screen and (max-width:721px)" rel="stylesheet" />
+  <link href="/assets/large-ltr-872291f588a65adc5cb44915979ce132.css" media="screen and (min-width: 722px)" rel="stylesheet" />
+  <link href="/assets/print-ltr-1ef85232891536837d9793753e1c1031.css" media="print" rel="stylesheet" />
+  <link href="/assets/leaflet-all-819784736dba37c3e677a1e9c32d4d63.css" media="screen, print" rel="stylesheet" />
+  <!--[if IE]>
+    <link href="/assets/large-ltr-872291f588a65adc5cb44915979ce132.css" media="screen" rel="stylesheet" />
+  <![endif]-->
+  <link href="/assets/favicon-8cfa1058b562d98917d7a7012e6a35e9.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+  <link href="/assets/osm_logo_57-44a16b282500d199beb79cda0ccf15b7.png" rel="apple-touch-icon" sizes="57x57" type="image/png" />
+  <link href="/assets/osm_logo_72-de63e879f29c61a6f53b8cef53127b9c.png" rel="apple-touch-icon" sizes="72x72" type="image/png" />
+  <link href="/assets/osm_logo_114-cb8269ec47a76d4a5316c0e1ffb2a90d.png" rel="apple-touch-icon" sizes="114x114" type="image/png" />
+  <link href="/assets/osm_logo_144-483237c79cf04b700cd74a827c9abd74.png" rel="apple-touch-icon" sizes="144x144" type="image/png" />
+  <link href="/assets/osm_logo_228-ea79855a687d924f407b11fda00e6c0a.png" rel="icon" sizes="228x228" type="image/png" />
+  <meta content="/assets/osm_logo_144-483237c79cf04b700cd74a827c9abd74.png" name="msapplication-TileImage" />
+  <link href="https://plus.google.com/111953119785824514010" rel="publisher" />
+  <link href="/assets/osm-f70187d3d9da65c9461062ebc3ce53ec.xml" rel="search" title="OpenStreetMap Search" type="application/opensearchdescription+xml" />
+  <meta content="OpenStreetMap is the free wiki world map." name="description" />
+  <meta content="/assets/osm_logo-bdc05cbca519f5b6af397961dc34b0c0.png" property="og:image" />
+  <style type="text/css">.hidden { display: none !important }.hide_unless_logged_in { display: none !important }.hide_unless_administrator { display: none !important }.hide_unless_moderator { display: none !important }</style>
+    <script src="/assets/index-69dfc7ddfd365281997934493535bda3.js"></script>
+
+  
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="eEEyKaxLzNO0hohl47ZJbaEF1pT5oayXgWljmZiLZNM=" name="csrf-token" />
+  <script type="text/javascript">
+    I18n.defaultLocale = "en";
+    I18n.locale = "zh-CN";
+    I18n.fallbacks = true;
+    OSM.preferred_editor = "id";
+  </script>
+  <title>OpenStreetMap</title>
+</head>
+
+  <body class="map-layout">
+    <header class="closed">
+  <h1>
+    <a href="/" class="geolink">
+      <img alt="OpenStreetMap标志" class="logo" src="/assets/osm_logo-bdc05cbca519f5b6af397961dc34b0c0.png" />
+      OpenStreetMap
+    </a>
+  </h1>
+  <a href="#" id="menu-icon"></a>
+  <nav class='primary'>
+      <form method="GET" action="/search" class="search_form">
+  <input name="commit" type="submit" value="提交" />
+  <div class='query_wrapper'>
+    <input id="query" name="query" placeholder="搜索" type="text" />
+    <a class="describe_location" href="#" title="使用搜索引擎说明当前位置">我在哪里？</a>
+  </div>
+</form>
+
+
+    <ul>
+      <li id="edit_tab" class="dropdown ">
+        <a class="tab geolink editlink" data-editor="id" href="/edit" id="editanchor">编辑</a><a class='dropdown-toggle' data-toggle='dropdown' href='#'><b class="caret"></b></a>
+        <ul class='dropdown-menu'>
+            <li>
+              <a class="geolink editlink" data-editor="id" href="/edit?editor=id">使用iD（浏览器内编辑器）编辑</a>
+            </li>
+            <li>
+              <a class="geolink editlink" data-editor="potlatch2" href="/edit?editor=potlatch2">使用Potlatch 2（浏览器内编辑器）编辑</a>
+            </li>
+            <li>
+              <a class="geolink editlink" data-editor="remote" href="/edit?editor=remote">使用远程控制（JOSM或Merkaartor）编辑</a>
+            </li>
+        </ul>
+      </li>
+      <li id="history_tab" class="">
+        <a class="tab geolink" href="/history">历史</a>
+      </li>
+      <li id="export_tab" class="">
+        <a class="tab geolink" href="/export">导出</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class='secondary'>
+    <ul>
+      <li class="compact-hide "><a href="/traces">GPS轨迹</a></li>
+      <li class="compact-hide "><a href="/diary">用户日记</a></li>
+      <li class="compact-hide "><a href="/copyright">著作权</a></li>
+      <li class="compact-hide "><a href="/help">帮助</a></li>
+      <li class="compact-hide "><a href="/about">关于</a></li>
+      <li id="compact-secondary-nav" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多 <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li class=""><a href="/traces">GPS轨迹</a></li>
+          <li class=""><a href="/diary">用户日记</a></li>
+          <li class=""><a href="/help">帮助</a></li>
+          <li class=""><a href="/about">关于</a></li>
+          <li class=""><a href="/copyright">著作权</a></li>
+        </ul>
+      </li>
+    </ul>
+      <ul class="user-menu clearfix">
+        <li><a href="/login?referer=%2F">登录</a></li>
+        <li><a href="/user/new">注册</a></li>
+      </ul>
+  </nav>
+</header>
+
+    <div id="content" class="overlay-sidebar">
+      <div id="sidebar">
+    <form method="GET" action="/search" class="search_form">
+  <input name="commit" type="submit" value="提交" />
+  <div class='query_wrapper'>
+    <input autofocus="autofocus" id="query" name="query" placeholder="搜索" type="text" />
+    <a class="describe_location" href="#" title="使用搜索引擎说明当前位置">我在哪里？</a>
+  </div>
+</form>
+
+
+
+    <div id="flash">
+      
+
+
+    </div>
+
+    <div id="browse_status"></div>
+
+    <div id="sidebar_loader" style="display: none;">
+      <img alt="正在载入..." class="loader" src="/assets/searching-000a5378efc9d9ee709b2439563e28db.gif">
+    </div>
+
+    <div id="sidebar_content">
+      
+    </div>
+
+      <div class="welcome">
+        <h2><a><span class="icon close"></span></a>欢迎访问OpenStreetMap！</h2>
+        <p>OpenStreetMap是一个世界地图，由同你一样的人们所构筑，可依据开放许可协议自由使用。</p>
+        <a class="button learn-more" href="/about">了解更多</a>
+        <a class="button sign-up" href="/user/new">开始绘制地图</a>
+      </div>
+  </div>
+
+  <noscript>
+    <div id="noscript">
+      <p>你或许正在使用不支持 JavaScript 的浏览器，或你禁用了 JavaScript。</p>
+      <p>OpenStreetMap 使用 JavaScript 让地图更平滑。</p>
+    </div>
+  </noscript>
+
+  <div id="map-ui">
+  </div>
+
+  <div id="map" tabindex="2">
+  </div>
+
+  <div id="attribution">
+    <table width="100%">
+      <tr>
+        <td class="attribution_license">http://openstreetmap.org/copyright</td>
+        <td class="attribution_project">http://openstreetmap.org</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="attribution_notice">版权所有 OpenStreetMap及其贡献者，采用开放授权协议</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+    <noscript><p><img src="http://piwik.openstreetmap.org/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+  </body>
+</html>
+

@@ -1,6 +1,0 @@
-from selenium import webdriver
-
-driver = webdriver.PhantomJS()
-driver.get('www.baidu.com')
-data = driver.find_element_by_id('cp').text
-print data

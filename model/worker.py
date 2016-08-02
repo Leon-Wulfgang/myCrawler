@@ -32,7 +32,7 @@ class Worker(ant.Ant):
         :param response:
         :return:
         """
-        self.write_page_to_file('login.html', response)
+        self.write_page_to_file('result/login.html', response)
         login_name = response.selector.xpath('//*[@id="username"]/attribute::name').extract()
         login_password = response.selector.xpath('//*[@id="password"]/attribute::name').extract()
 
@@ -44,17 +44,17 @@ class Worker(ant.Ant):
 
     def parse_after_login(self, response):
         print 'Real Page'
-        self.write_page_to_file('realPage.html', response)
+        self.write_page_to_file('result/realPage.html', response)
 
     def after_login(self, response):
         # check login succeed before going on
         if "authentication failed" in response.body:
             self.logger.error("Login failed")
-            self.write_page_to_file('afterLogin.html')
+            self.write_page_to_file('result/afterLogin.html')
             return
         else:
             print 'After Login'
-            self.write_page_to_file('afterLogin.html', response)
+            self.write_page_to_file('result/afterLogin.html', response)
             return scrapy.Request(
                 url="http://38.103.161.149/bbs/forum-277-1.html",
                 callback=self.parse_after_login)

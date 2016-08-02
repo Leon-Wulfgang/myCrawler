@@ -4,16 +4,17 @@ distribution of work
 by Hao Wu
 https://github.com/Leon-Wulfgang
 """
-import sys, ant, worker
+import ant
+import worker
+import conf.service_mapping
 from scrapy.crawler import CrawlerProcess
 
 
+# Queen ants manage work, create worker ant for services
 class Queen(ant.Ant):
     name = 'queen'
     argv = None
-    service_map = {
-            'sis': 'service_sis',
-        }
+    service_map = conf.service_mapping.global_service_map
 
     def __init__(self, argv):
         ant.Ant.__init__(self)
@@ -24,8 +25,14 @@ class Queen(ant.Ant):
         self.route(service_name)
 
     def route(self, service_name):
-        print locals()
-        #self.service_sis()
+        try:
+            fn = self.service_map[service_name]
+            print('Running Service:',service_name)
+        except StandardError:
+            print 'Service Name: ', service_name, ' - Not Found.'
+            exit(1)
+        service = getattr(self, fn)
+        service()
 
     def service_sis(self):
         process = CrawlerProcess({
